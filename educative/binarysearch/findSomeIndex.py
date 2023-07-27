@@ -12,11 +12,8 @@ def find(A, target):
         return 0
 
     def condition(val):
-        if A[mid] >= target:
-            return True
-        else:
-            return False
-    
+        return A[mid] >= target
+
     left, right = 0, len(A) - 1
     while left < right:
         mid = left + (right - left) // 2

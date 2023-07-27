@@ -12,8 +12,7 @@ def inOrder(tree_root):
         print(node.value, end=' ')
       else:
         stack.append((node.right, False))
-        stack.append((node, True))
-        stack.append((node.left, False))
+        stack.extend(((node, True), (node.left, False)))
 
 
 

@@ -12,25 +12,23 @@ space: n
 class Solution:
     def employeeFreeTime(self, schedule: '[[Interval]]') -> '[Interval]':
         events = []
-        
+
         for e in schedule:
             for m in e:
-                events.append((m.start, 1))
-                events.append((m.end, -1))
-        
+                events.extend(((m.start, 1), (m.end, -1)))
         heapq.heapify(events)
 
         itv = []
         prev = None
         bal = 0
-                
+
         while events:
             t, c = heapq.heappop(events)
             if bal == 0 and prev is not None and t != prev:
                 itv.append(Interval(prev, t))
             bal += c
             prev = t
-            
+
         return itv
         
 """
@@ -46,8 +44,7 @@ class Solution:
         events = []
         for e in schedule:
             for m in e:
-                events.append((m.start, 1))
-                events.append((m.end, -1))
+                events.extend(((m.start, 1), (m.end, -1)))
         events.sort()
         itv = []
         prev = None

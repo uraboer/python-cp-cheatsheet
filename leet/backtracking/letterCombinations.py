@@ -3,7 +3,7 @@ class Solution:
 
     def letterCombinations(self, digits:str) -> list[str]:
         rtn = []
-        if len(digits) == 0: return rtn
+        if not digits: return rtn
         self.backtracking(rtn, digits, "", 0)
         return rtn
     

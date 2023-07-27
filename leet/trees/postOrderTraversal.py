@@ -24,8 +24,5 @@ class Solution:
                 if visited:
                     rtn.append(node.val)
                 else:
-                    stk.append((node, True))
-                    stk.append((node.right, False))
-                    stk.append((node.left, False))
-
+                    stk.extend(((node, True), (node.right, False), (node.left, False)))
         return rtn

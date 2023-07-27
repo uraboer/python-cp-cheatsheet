@@ -17,28 +17,28 @@ class Solution:
                     else:
                         cnt -= 1
             return cnt == 0
-            
-        
+
+
         rtn = []
-        
+
         level = set()
         level.add(s)
-        
+
         while True:
             # check if string is valid, if so then add to rtn
             for s in level:
                 if isValid(s):
                     rtn.append(s)
-                    
-            if len(rtn) > 0:
+
+            if rtn:
                 return rtn
-            
+
             # if not, make substrings and repeat
             newLevel = set()
             for s in level:
                 for i,c in enumerate(s):
                     if c == '(' or ')':
-                        newLevel.add(s[0:i] + s[i+1:len(s)])
+                        newLevel.add(s[:i] + s[i+1:])
             level = newLevel
 
 
@@ -48,11 +48,7 @@ class Solution:
         # set is used here in order to avoid duplicate element
         level = {s}
         while True:
-            valid = []
-            for elem in level:
-                if self.isValid(elem):
-                    valid.append(elem)
-            if valid:
+            if valid := [elem for elem in level if self.isValid(elem)]:
                 return valid
             # initialize an empty set
             new_level = set()

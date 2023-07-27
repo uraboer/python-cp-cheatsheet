@@ -16,8 +16,7 @@ def preOrder(tree_root):
       if visited:
         print(node.value, end=' ')
       else:
-        stack.append((node.right, False))
-        stack.append((node.left, False))
+        stack.extend(((node.right, False), (node.left, False)))
         stack.append((node, True))
 
 

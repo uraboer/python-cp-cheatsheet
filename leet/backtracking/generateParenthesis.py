@@ -10,9 +10,9 @@ class Solution:
             stk.append(s)
             return
         if left > 0:
-            self.backtracking(stk, n, left-1, right+1, s + "(")
+            self.backtracking(stk, n, left-1, right+1, f"{s}(")
         if right > 0:
-            self.backtracking(stk, n, left, right-1, s + ")")    
+            self.backtracking(stk, n, left, right-1, f"{s})")    
 
 """
 nth Catalan number 1/n+1(2n/n) which is bounded asymptotically
@@ -24,15 +24,15 @@ space: O(n) to store the sequence
 class Solution:
     def generateParenthesis(self, n:int) -> List[str]:
         rtn = []
-        
+
         def dfs(left:int, right:int, s:str):
             if (len(s) == 2*n):
                 rtn.append(s)
                 return
             if left > 0:
-                dfs(left-1,right+1,s+'(')
+                dfs(left-1, right+1, f'{s}(')
             if right > 0:
-                dfs(left,right-1,s+')')
-        
+                dfs(left, right-1, f'{s})')
+
         dfs(n,0,"")
         return rtn

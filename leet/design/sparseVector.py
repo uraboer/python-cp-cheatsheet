@@ -14,7 +14,7 @@ class SparseVector:
     
     def dotProduct(self, vec : 'SpareVector') -> int:        
         # iterate through keys -for i in vec.data . Not for i,j in enumerate(vec.data)
-        return sum([self.data[i] * vec.data[i] for i in vec.data if i in self.data])
+        return sum(self.data[i] * vec.data[i] for i in vec.data if i in self.data)
     
 
 class SparseVector:
@@ -24,9 +24,4 @@ class SparseVector:
             self.ref[i] = n
     
     def dotProduct(self, sv: 'SparseVector') -> int:
-        total = 0
-        for k in sv.ref:
-            if k in self.ref:
-                total += self.ref[k] * sv.ref[k]
-                
-        return total
+        return sum(self.ref[k] * sv.ref[k] for k in sv.ref if k in self.ref)

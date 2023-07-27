@@ -6,11 +6,7 @@ Verifying an Alien Dictionary
 """
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
-        al = {}
-        
-        for i, c in enumerate(order):
-            al[c] = i
-         
+        al = {c: i for i, c in enumerate(order)}
         for a, b in zip(words, words[1:]):
             if len(a) > len(b) and a[:len(b)] == b:
                 return False
@@ -19,7 +15,7 @@ class Solution:
                     return False
                 elif al[c1] < al[c2]:
                     break
-        
+
         return True
 
 """
@@ -28,27 +24,15 @@ space: O(1)
 """
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
-        dct = {}
-        
-        for i, c in enumerate(order):
-            dct[c] = i
-        
+        dct = {c: i for i, c in enumerate(order)}
         trans = lambda x: [dct[c] for c in x]
-        
-        for w1, w2 in zip(words, words[1:]):
-            if trans(w1) > trans(w2):
-                return False
-        
-        return True
+
+        return all(trans(w1) <= trans(w2) for w1, w2 in zip(words, words[1:]))
 
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
         dt = {c:i for i,c in enumerate(order)}
-        
+
         trans = lambda x: [dct[c] for c in x]
-        
-        for w1, w2 in zip(words, words[1:]):
-            if trans(w1) > trans(w2):
-                return False
-        
-        return True
+
+        return all(trans(w1) <= trans(w2) for w1, w2 in zip(words, words[1:]))

@@ -9,21 +9,17 @@ class Solution:
         rtn = C - 1
         for r in range(R):
             for c in range(rtn, -1, -1):
-                if binaryMatrix.get(r,c) == 1:
-                    rtn = c
-                    foundOne = c
-                else:
+                if binaryMatrix.get(r, c) != 1:
                     break
-        
-        if foundOne == -1:
-            return -1
-        
-        return rtn
+
+                rtn = c
+                foundOne = c
+        return -1 if foundOne == -1 else rtn
 
     def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
         y,x = binaryMatrix.dimensions()
         foundOne = False
-        
+
         r = x-1
         for y1 in range(y):
             while r >= 0 and binaryMatrix.get(y1, r) == 1:
@@ -31,30 +27,24 @@ class Solution:
                 foundOne = True
             if r == -1:
                 return 0
-        
-        if foundOne == False:
-            return -1
-        else:
-            return r+1
+
+        return -1 if foundOne == False else r+1
 
 
 class Solution:
     def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
         y,x = binaryMatrix.dimensions()
-        
+
         cury=0
         curx=x-1
-        
+
         while cury < y and curx >= 0:
             if binaryMatrix.get(cury, curx):
                 curx -= 1
             else:
                 cury += 1
-        
-        if curx == x-1:
-            return -1
-        else:
-            return curx + 1
+
+        return -1 if curx == x-1 else curx + 1
 
 class Solution:
     def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
@@ -73,16 +63,12 @@ class Solution:
         y, x =  binaryMatrix.dimensions()
         foundOne = False
         res = x -1
-        
+
         for i in range(y):
             for j in range(res, -1, -1):
-                if binaryMatrix.get(i, j): 
-                    res = j
-                    foundOne = True
-                else: 
+                if not binaryMatrix.get(i, j):
                     break
 
-        if foundOne == False:
-            return -1
-                    
-        return res
+                res = j
+                foundOne = True
+        return -1 if foundOne == False else res

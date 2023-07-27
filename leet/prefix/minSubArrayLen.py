@@ -23,17 +23,14 @@ class Solution:
         
         l = ps = 0
         rtn = len(nums)+1
-        
+
         for r, n in enumerate(nums):
             ps += n
-            
+
             while ps >= target and l<=r:
                 rtn = min(rtn, r-l+1)
                 ps -= nums[l]
                 l += 1
-        
-        if rtn == len(nums)+1:
-            return 0
-        
-        return rtn
+
+        return 0 if rtn == len(nums)+1 else rtn
             
