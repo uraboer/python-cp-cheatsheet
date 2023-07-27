@@ -9,6 +9,4 @@ class Solution:
             seen.add(n)
             if len(seen) > 3:
                 seen.remove(min(seen))
-        if len(seen) < 3:
-            return max(seen)
-        return min(seen)
+        return max(seen) if len(seen) < 3 else min(seen)

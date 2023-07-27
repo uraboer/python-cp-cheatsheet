@@ -8,6 +8,3 @@ def is_unique(input_str):
       ht[c] = True
 
   return True
-
-  def is_unique_2(input_str):
-    return len(set(input_str)) == len(input_str)

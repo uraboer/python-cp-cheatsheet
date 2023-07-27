@@ -23,9 +23,9 @@ class Solution:
     def lowestCommonAncestor(self, p, q):
         pVals = set()
         def traverse_up(root):
-            if root == None or root in pVals:
+            if root is None or root in pVals:
                 return root
             pVals.add(root)
             return traverse_up(root.parent)
-            
+
         return traverse_up(p) or traverse_up(q)

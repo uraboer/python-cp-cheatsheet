@@ -25,8 +25,6 @@ class Solution:
                         cnt += 1
                 else:
                     stk.append((node.right, False))
-                    stk.append((node, True))
-                    stk.append((node.left, False))
-        
+                    stk.extend(((node, True), (node.left, False)))
         return -1
                 

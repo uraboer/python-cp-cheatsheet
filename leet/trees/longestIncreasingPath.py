@@ -11,8 +11,8 @@ node: (0, 2)
 class Solution:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
         self.cnt = 0
-        
-        if len(matrix) == 0:
+
+        if not matrix:
             return 0
 
         def dfsn(coord, prev):
@@ -40,11 +40,11 @@ class Solution:
                 return max(d1, d2) + 1 
             else:
                 return 0
-        
+
         dn = dfsn((0,0), float('-inf'))
         dp = dfsp((0,0), float('inf'))
 
-        
+
         return max(dn, dp)
     
 class Solution:
@@ -82,14 +82,14 @@ class Solution:
 
 class Solution:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
-        if len(matrix) == 0: 
+        if not matrix: 
             return 0
-        
+
         Y = len(matrix)
         X = len(matrix[0])
-        
+
         dp = [[0] * X for y in range(Y)]
-        
+
         def exp(y,x):
             if dp[y][x] == 0:
                 val = matrix[y][x]

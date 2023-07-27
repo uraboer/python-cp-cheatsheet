@@ -66,18 +66,14 @@ class AllOne:
         """
         Returns one of the keys with maximal value.
         """
-        if not self.tail.prev.st:
-            return ""
-        return next(iter(self.tail.prev.st))
+        return "" if not self.tail.prev.st else next(iter(self.tail.prev.st))
         
 
     def getMinKey(self) -> str:
         """
         Returns one of the keys with Minimal value.
         """
-        if not self.head.next.st:
-            return ""
-        return next(iter(self.head.next.st))
+        return "" if not self.head.next.st else next(iter(self.head.next.st))
 
 
 

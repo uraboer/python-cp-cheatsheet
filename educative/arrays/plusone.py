@@ -9,7 +9,7 @@ def plus_one(A):
 
     carry, total = 1, 0
 
-    if len(A) == 0 or len(A) == 1:
+    if len(A) in {0, 1}:
         return 
 
     for i in reversed(range(0, len(A))):

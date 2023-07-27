@@ -12,14 +12,17 @@ def almostIncreasingSequence(sequence):
             if seq[i] >= seq[i+1]:
                 return i
         return -1
-        
+
     firstTest = isIncreasing(sequence)
 
     if firstTest == -1:
         return True
-    elif isIncreasing(sequence[0:firstTest] + sequence[firstTest+1:]) == -1:
+    elif isIncreasing(sequence[:firstTest] + sequence[firstTest + 1 :]) == -1:
+        return True
+    elif (
+        isIncreasing(sequence[: firstTest + 1] + sequence[firstTest + 2 :])
+        == -1
+    ):
         return True 
-    elif isIncreasing(sequence[0:firstTest+1] + sequence[firstTest+2:]) == -1:
-        return True 
-    
+
     return False

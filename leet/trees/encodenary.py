@@ -38,14 +38,13 @@ class Codec:
             val = next(vals)
             if val == '#':
                 return None
-            else:
-                node = Node(int(val), [])
+            node = Node(int(val), [])
+            child = dfs()
+            while child:
+                node.children.append(child)
                 child = dfs()
-                while child:
-                    node.children.append(child)
-                    child = dfs()
-                return node
-            
+            return node
+
         vals = iter(data.split())
         return dfs()
 

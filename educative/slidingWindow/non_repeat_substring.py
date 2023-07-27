@@ -13,10 +13,8 @@ def non_repeat_substring(str):
       maxLen = max(maxLen, len(ht))
       ht.clear()
     ht[c] = True
-  
-  maxLen = max(len(ht), maxLen) 
 
-  return maxLen
+  return max(len(ht), maxLen)
 
 def main():
   print("Length of the longest substring: " + str(non_repeat_substring("aabccbb")))
